@@ -5,6 +5,20 @@ import mailer from '$lib/mailer';
 export const POST = async ({ request, locals }) => {
   const formData = await request.formData();
 
+  if (
+    !formData.get('email') ||
+    !formData.get('accessKey') ||
+    !formData.get('subject') ||
+    !formData.get('message') ||
+    !formData.get('from')
+  )
+    return json({
+      status: 200,
+      body: {
+        message: 'Missing data. Required fields are: email, accessKey, subject, message and from.'
+      }
+    });
+
   let customValues = [];
   for (const [name, value] of formData.entries()) {
     if (name.startsWith('$')) {
