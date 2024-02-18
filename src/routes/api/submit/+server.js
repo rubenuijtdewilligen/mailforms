@@ -52,10 +52,17 @@ export const POST = async ({ request, locals }) => {
       html
     });
 
-    return json({
-      status: 200,
-      body: { message: 'The email was sent successfully.' }
-    });
+    if (formData.get('redirectTo')) {
+      return new Response('Redirecting...', {
+        status: 303,
+        headers: new Headers({ Location: formData.get('redirectTo') })
+      });
+    } else {
+      return json({
+        status: 200,
+        body: { message: 'The email was sent successfully.' }
+      });
+    }
   } catch (error) {
     console.log(error);
 
