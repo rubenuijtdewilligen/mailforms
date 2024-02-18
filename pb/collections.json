@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "tbexloyjvyrq947",
+    "name": "tokens",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "tgm6beii",
+        "name": "email",
+        "type": "email",
+        "system": false,
+        "required": true,
+        "options": {
+          "exceptDomains": null,
+          "onlyDomains": null
+        }
+      }
+    ],
+    "indexes": ["CREATE UNIQUE INDEX `idx_WWZv3Ih` ON `tokens` (`email`)"],
+    "listRule": null,
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {}
+  }
+]
